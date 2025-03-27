@@ -10,6 +10,12 @@ A Spring Boot REST API for performing mathematical calculations. Supports basic 
 - Actuator health monitoring
 - Docker support
 - Comprehensive test coverage
+## Design Decisions
+- Open-Closed Principle: The design of the Calculator class ensures it is open for extension but closed for modification. The Operation enum defines all supported operations, and new operations can be added by simply extending this enum and implementing the operation logic. The calculate method in the Calculator class handles the new operations without needing modification.
+
+- IoC (Inversion of Control): To ensure loose coupling, Spring Framework's IoC principles are used. The calculator's service logic is injected via Spring’s dependency injection mechanism, making the solution modular, easy to test, and extend.
+
+- Exception Handling: Custom error messages and exceptions are used to gracefully handle invalid operations and edge cases. Errors are logged to provide traceability, while the user gets meaningful messages regarding what went wrong.
 
 ## Prerequisites
 
