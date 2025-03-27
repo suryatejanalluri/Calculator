@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculatorController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator Project</a> &gt; <a href="index.source.html" class="el_package">com.example.calculator.controller</a> &gt; <span class="el_source">CalculatorController.java</span></div><h1>CalculatorController.java</h1><pre class="source lang-java linenums">package com.example.calculator.controller;
+
+import com.example.calculator.model.Operation;
+import com.example.calculator.model.ChainOperation;
+import com.example.calculator.service.CalculatorService;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import com.example.calculator.dto.CalculationResponse;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.example.calculator.model.CalculationRequest;
+/**
+ * REST controller for calculator operations.
+ * Provides endpoints for basic calculations and chain operations.
+ */
+@RestController
+@RequestMapping(&quot;/api/v1/calculator&quot;)
+public class CalculatorController {
+<span class="fc" id="L21">    private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);</span>
+    private final CalculatorService calculatorService;
+
+    /**
+     * Creates a new calculator controller with the required service.
+     *
+     * @param calculatorService service to handle calculations
+     */
+    @Autowired
+<span class="fc" id="L30">    public CalculatorController(CalculatorService calculatorService) {</span>
+<span class="fc" id="L31">        logger.debug(&quot;Initializing CalculatorController&quot;);</span>
+<span class="fc" id="L32">        this.calculatorService = calculatorService;</span>
+<span class="fc" id="L33">    }</span>
+
+        /**
+     * POST endpoint for single calculations using JSON body.
+     * Example: {&quot;operation&quot;: &quot;ADD&quot;, &quot;num1&quot;: 5, &quot;num2&quot;: 3}
+     *
+     * @param request calculation request containing operation and operands
+     * @return result of the calculation
+     */
+    @PostMapping(&quot;/calculate&quot;)
+    public ResponseEntity&lt;CalculationResponse&gt; calculatePost(@RequestBody CalculationRequest request) {
+<span class="fc" id="L44">        logger.info(&quot;Received POST calculation request: {}&quot;, request);</span>
+<span class="fc" id="L45">        Number result = calculatorService.calculate(</span>
+<span class="fc" id="L46">            request.getOperation(),</span>
+<span class="fc" id="L47">            request.getNum1(),</span>
+<span class="fc" id="L48">            request.getNum2()</span>
+        );
+<span class="fc" id="L50">    CalculationResponse response = new CalculationResponse(result);</span>
+
+    // Return the response as ResponseEntity
+<span class="fc" id="L53">    return ResponseEntity.ok(response);</span>
+    }
+
+
+    /**
+     * Endpoint for chain calculations.
+     *
+     * @param initial starting value
+     * @param operations list of operations to perform
+     * @return final result after all operations
+     */
+    @PostMapping(&quot;/chainCalculate&quot;)
+    public Number chainCalculate(@RequestParam Number initial, 
+                               @RequestBody List&lt;ChainOperation&gt; operations) {
+<span class="fc" id="L67">        logger.info(&quot;Received chain calculation request with initial value: {}&quot;, initial);</span>
+<span class="fc" id="L68">        logger.debug(&quot;Chain operations: {}&quot;, operations);</span>
+<span class="fc" id="L69">        Number result = calculatorService.chainCalculate(initial, operations);</span>
+<span class="fc" id="L70">        logger.debug(&quot;Returning chain result: {}&quot;, result);</span>
+<span class="fc" id="L71">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

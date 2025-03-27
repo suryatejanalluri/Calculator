@@ -1,0 +1,9 @@
+com.example.calculator
+com.example.calculator.config
+com.example.calculator.controller
+com.example.calculator.dto
+com.example.calculator.exceptions
+com.example.calculator.health
+com.example.calculator.model
+com.example.calculator.operations
+com.example.calculator.service

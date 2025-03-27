@@ -1,0 +1,6 @@
+com\example\calculator\integration\CalculatorIntegrationTest.class
+com\example\calculator\CalculatorApplicationTest.class
+com\example\calculator\exceptions\CalculatorExceptionTest.class
+com\example\calculator\CalculatorServiceTest.class
+com\example\calculator\controller\CalculatorControllerTest.class
+com\example\calculator\health\CalculatorHealthIndicatorTest.class

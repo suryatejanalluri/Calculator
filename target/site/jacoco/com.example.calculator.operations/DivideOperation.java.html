@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DivideOperation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator Project</a> &gt; <a href="index.source.html" class="el_package">com.example.calculator.operations</a> &gt; <span class="el_source">DivideOperation.java</span></div><h1>DivideOperation.java</h1><pre class="source lang-java linenums">package com.example.calculator.operations;
+
+import com.example.calculator.model.Operation;
+import org.springframework.stereotype.Component;
+import com.example.calculator.exceptions.DivideByZeroException;  // Add this import
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * Division operation implementation.
+ * This class handles the division of two numbers in the calculator.
+ */
+@Component
+<span class="fc" id="L17">public class DivideOperation implements MathOperation {</span>
+<span class="fc" id="L18">    private static final Logger logger = LoggerFactory.getLogger(DivideOperation.class);</span>
+    private static final int DECIMAL_SCALE = 10;
+
+    /**
+     * Performs division of two numbers.
+     *
+     * @param a the dividend
+     * @param b the divisor
+     * @return the quotient (a / b)
+     * @throws DivideByZeroException if the divisor is zero
+     */
+    @Override
+    public Number apply(Number a, Number b) {
+<span class="fc" id="L31">        logger.debug(&quot;Performing division: {} / {}&quot;, a, b);</span>
+<span class="fc" id="L32">        BigDecimal dividend = toBigDecimal(a);</span>
+<span class="fc" id="L33">        BigDecimal divisor = toBigDecimal(b);</span>
+        
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (divisor.compareTo(BigDecimal.ZERO) == 0) {</span>
+<span class="fc" id="L36">            logger.error(&quot;Division by zero attempted with dividend: {}&quot;, a);</span>
+<span class="fc" id="L37">            throw new DivideByZeroException(&quot;Division by zero is not allowed&quot;);</span>
+        }
+<span class="fc" id="L39">        BigDecimal result = dividend.divide(divisor, DECIMAL_SCALE, RoundingMode.HALF_UP);;</span>
+<span class="fc" id="L40">        logger.trace(&quot;Division result: {}&quot;, result);</span>
+<span class="fc" id="L41">        return result;</span>
+    }
+
+    /**
+     * Gets the operation type (DIVIDE).
+     *
+     * @return Operation.DIVIDE enum value
+     */
+    @Override
+    public Operation getOperation() {
+<span class="fc" id="L51">        logger.trace(&quot;Returning operation type: {}&quot;, Operation.DIVIDE);</span>
+<span class="fc" id="L52">        return Operation.DIVIDE;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

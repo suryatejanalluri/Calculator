@@ -1,0 +1,23 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Calculator Project,com.example.calculator.service,CalculatorService,38,160,6,14,9,34,6,8,0,4
+Calculator Project,com.example.calculator.config,SecurityConfig,0,82,0,0,0,20,0,5,0,5
+Calculator Project,com.example.calculator.config,GlobalExceptionHandler,95,7,4,0,23,2,7,2,5,2
+Calculator Project,com.example.calculator.health,CalculatorHealthIndicator,0,12,0,0,0,5,0,2,0,2
+Calculator Project,com.example.calculator.exceptions,UnsupportedOperationException,0,5,0,0,0,2,0,1,0,1
+Calculator Project,com.example.calculator.exceptions,CalculatorException,0,9,0,0,0,4,0,2,0,2
+Calculator Project,com.example.calculator.exceptions,DivideByZeroException,0,13,0,0,0,6,0,3,0,3
+Calculator Project,com.example.calculator.exceptions,InvalidInputException,0,5,0,0,0,2,0,1,0,1
+Calculator Project,com.example.calculator.exceptions,ChainOperationException,0,4,0,0,0,2,0,1,0,1
+Calculator Project,com.example.calculator.operations,SubtractOperation,0,36,0,0,0,10,0,4,0,4
+Calculator Project,com.example.calculator.operations,DivideOperation,0,51,0,2,0,13,0,5,0,4
+Calculator Project,com.example.calculator.operations,MathOperation,0,12,0,2,0,3,0,2,0,1
+Calculator Project,com.example.calculator.operations,MultiplyOperation,0,36,0,0,0,10,0,4,0,4
+Calculator Project,com.example.calculator.operations,AddOperation,0,36,0,0,0,9,0,4,0,4
+Calculator Project,com.example.calculator.dto,Calc,36,0,0,0,16,0,8,0,8,0
+Calculator Project,com.example.calculator.dto,CalculationResponse,7,9,0,0,4,4,2,2,2,2
+Calculator Project,com.example.calculator.controller,CalculatorController,0,55,0,0,0,17,0,4,0,4
+Calculator Project,com.example.calculator.controller,WelcomeController,5,7,0,0,2,2,1,2,1,2
+Calculator Project,com.example.calculator,CalculatorApplication,0,8,0,0,0,3,0,2,0,2
+Calculator Project,com.example.calculator.model,ChainOperation,0,17,0,0,0,7,0,5,0,5
+Calculator Project,com.example.calculator.model,CalculationRequest,0,24,0,0,0,10,0,7,0,7
+Calculator Project,com.example.calculator.model,Operation,0,27,0,0,0,5,0,1,0,1
