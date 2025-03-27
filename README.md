@@ -21,13 +21,6 @@ Before running the project, ensure you have the following installed:
 - **Java 17** or higher
 - **Maven 3.6** or higher
 
-### Checking Java and Maven
-
-To check if Java 17 is installed, run:
-
-```powershell
-java -version
-
 ## Quick Start
 
 1. Clone the repository:
